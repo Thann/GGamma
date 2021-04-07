@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.38.2 -->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <object class="GtkAdjustment" id="adj-brightness">
+    <property name="lower">0.25</property>
+    <property name="upper">3</property>
+    <property name="value">1</property>
+    <property name="step-increment">0.10</property>
+    <property name="page-increment">0.25</property>
+    <signal name="value-changed" handler="valueChanged" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="adj-gamma-blue">
+    <property name="lower">0.25</property>
+    <property name="upper">3</property>
+    <property name="value">1</property>
+    <property name="step-increment">0.10</property>
+    <property name="page-increment">0.25</property>
+    <signal name="value-changed" handler="valueChanged" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="adj-gamma-green">
+    <property name="lower">0.25</property>
+    <property name="upper">3</property>
+    <property name="value">1</property>
+    <property name="step-increment">0.10</property>
+    <property name="page-increment">0.25</property>
+    <signal name="value-changed" handler="valueChanged" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="adj-gamma-main">
+    <property name="lower">0.25</property>
+    <property name="upper">3</property>
+    <property name="value">1</property>
+    <property name="step-increment">0.10</property>
+    <property name="page-increment">0.25</property>
+    <signal name="value-changed" handler="valueChanged" swapped="no"/>
+  </object>
+  <object class="GtkAdjustment" id="adj-gamma-red">
+    <property name="lower">0.25</property>
+    <property name="upper">3</property>
+    <property name="value">1</property>
+    <property name="step-increment">0.10</property>
+    <property name="page-increment">0.25</property>
+    <signal name="value-changed" handler="valueChanged" swapped="no"/>
+  </object>
+  <object class="GtkPopoverMenu" id="popover-menu">
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="margin-start">14</property>
+        <property name="margin-end">14</property>
+        <property name="margin-top">14</property>
+        <property name="margin-bottom">14</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">9</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="label" translatable="yes">Save Settings</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="focus-on-click">False</property>
+            <property name="receives-default">False</property>
+            <signal name="clicked" handler="closeMenu" swapped="no"/>
+            <signal name="clicked" handler="saveSettings" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="label" translatable="yes">Load Settings</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="focus-on-click">False</property>
+            <property name="receives-default">False</property>
+            <signal name="clicked" handler="closeMenu" swapped="no"/>
+            <signal name="clicked" handler="loadSettings" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton">
+            <property name="label" translatable="yes">Reset Settings</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="focus-on-click">False</property>
+            <property name="receives-default">False</property>
+            <signal name="clicked" handler="closeMenu" swapped="no"/>
+            <signal name="clicked" handler="resetSettings" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+      <packing>
+        <property name="submenu">main</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+  </object>
+  <object class="GtkWindow" id="main-window">
+    <property name="can-focus">False</property>
+    <property name="role">sox-noise</property>
+    <property name="resizable">False</property>
+    <property name="window-position">center</property>
+    <property name="icon-name">audio-volume-high</property>
+    <property name="gravity">west</property>
+    <property name="startup-id">sox-noise</property>
+    <signal name="destroy" handler="onDestroy" swapped="no"/>
+    <signal name="key-press-event" handler="onKeyPress" swapped="no"/>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="margin-start">14</property>
+        <property name="margin-end">14</property>
+        <property name="margin-top">5</property>
+        <property name="margin-bottom">14</property>
+        <property name="spacing">14</property>
+        <child>
+          <object class="GtkBox" id="main-box">
+            <property name="width-request">500</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="valign">start</property>
+            <property name="vexpand">False</property>
+            <property name="orientation">vertical</property>
+            <property name="spacing">3</property>
+            <child>
+              <object class="GtkImage" id="spec-imag">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="margin-start">5</property>
+                <property name="margin-end">5</property>
+                <property name="margin-top">5</property>
+                <property name="margin-bottom">5</property>
+                <property name="pixbuf">greyscale.png</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label-xalign">0</property>
+                <child>
+                  <object class="GtkAlignment">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="left-padding">12</property>
+                    <child>
+                      <object class="GtkScale" id="scale-gamma-main">
+                        <property name="name">band_center</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">adj-gamma-main</property>
+                        <property name="round-digits">3</property>
+                        <property name="digits">2</property>
+                        <property name="value-pos">left</property>
+                        <signal name="button-release-event" handler="doneAdjusting" swapped="no"/>
+                        <signal name="move-slider" handler="doneAdjusting" after="yes" swapped="no"/>
+                        <signal name="scroll-event" handler="doneAdjusting" swapped="no"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Gamma</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label-xalign">0</property>
+                <child>
+                  <object class="GtkAlignment">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="left-padding">12</property>
+                    <child>
+                      <object class="GtkScale" id="scale-brightness">
+                        <property name="name">band_width</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="adjustment">adj-brightness</property>
+                        <property name="round-digits">2</property>
+                        <property name="digits">2</property>
+                        <property name="value-pos">left</property>
+                        <signal name="button-release-event" handler="doneAdjusting" swapped="no"/>
+                        <signal name="move-slider" handler="doneAdjusting" after="yes" swapped="no"/>
+                        <signal name="scroll-event" handler="doneAdjusting" swapped="no"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Brightness</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <object class="GtkExpander" id="advanced-expander">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <property name="spacing">3</property>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label-xalign">0</property>
+                        <child>
+                          <object class="GtkAlignment">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="left-padding">12</property>
+                            <child>
+                              <object class="GtkScale" id="scale-gamma-red">
+                                <property name="name">reverb</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="adjustment">adj-gamma-red</property>
+                                <property name="round-digits">2</property>
+                                <property name="digits">2</property>
+                                <property name="value-pos">left</property>
+                                <signal name="button-release-event" handler="doneAdjusting" swapped="no"/>
+                                <signal name="move-slider" handler="doneAdjusting" after="yes" swapped="no"/>
+                                <signal name="scroll-event" handler="doneAdjusting" swapped="no"/>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">Red</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label-xalign">0</property>
+                        <child>
+                          <object class="GtkAlignment">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="left-padding">12</property>
+                            <child>
+                              <object class="GtkScale" id="scale-gamma-green">
+                                <property name="name">tremolo_speed</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="adjustment">adj-gamma-green</property>
+                                <property name="round-digits">2</property>
+                                <property name="digits">2</property>
+                                <property name="value-pos">left</property>
+                                <signal name="button-release-event" handler="doneAdjusting" swapped="no"/>
+                                <signal name="move-slider" handler="doneAdjusting" after="yes" swapped="no"/>
+                                <signal name="scroll-event" handler="doneAdjusting" swapped="no"/>
+                                <style>
+                                  <class name="lpad"/>
+                                </style>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">Green</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label-xalign">0</property>
+                        <child>
+                          <object class="GtkAlignment">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="left-padding">12</property>
+                            <child>
+                              <object class="GtkScale" id="scale-gamma-blue">
+                                <property name="name">tremolo_depth</property>
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="adjustment">adj-gamma-blue</property>
+                                <property name="round-digits">2</property>
+                                <property name="digits">2</property>
+                                <property name="value-pos">left</property>
+                                <signal name="button-release-event" handler="doneAdjusting" swapped="no"/>
+                                <signal name="move-slider" handler="doneAdjusting" after="yes" swapped="no"/>
+                                <signal name="scroll-event" handler="doneAdjusting" swapped="no"/>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="label">
+                          <object class="GtkLabel">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="label" translatable="yes">Blue</property>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">2</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+                <child type="label">
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="label" translatable="yes">Advanced</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">4</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButtonBox">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="margin-top">9</property>
+                <property name="layout-style">spread</property>
+                <child>
+                  <object class="GtkButton">
+                    <property name="label" translatable="yes">Reset</property>
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="focus-on-click">False</property>
+                    <property name="receives-default">False</property>
+                    <signal name="clicked" handler="resetSettings" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton">
+                    <property name="label" translatable="yes">Save</property>
+                    <property name="visible">True</property>
+                    <property name="sensitive">False</property>
+                    <property name="can-focus">True</property>
+                    <property name="focus-on-click">False</property>
+                    <property name="receives-default">False</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">5</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkImage" id="spec-image">
+            <property name="can-focus">False</property>
+            <property name="no-show-all">True</property>
+            <property name="margin-top">9</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child type="titlebar">
+      <object class="GtkHeaderBar">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="title" translatable="yes">GGamma</property>
+        <property name="has-subtitle">False</property>
+        <property name="show-close-button">True</property>
+        <child>
+          <object class="GtkMenuButton">
+            <property name="can-focus">True</property>
+            <property name="focus-on-click">False</property>
+            <property name="receives-default">True</property>
+            <property name="no-show-all">True</property>
+            <property name="popover">popover-menu</property>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
